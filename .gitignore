@@ -1,0 +1,12 @@
+# Amper build output
+build/
+
+# IntelliJ IDEA
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# OS-specific
+.DS_Store
+Thumbs.db
