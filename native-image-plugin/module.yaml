@@ -1,0 +1,15 @@
+product: jvm/amper-plugin
+
+repositories:
+  - https://packages.jetbrains.team/maven/p/amper/amper
+  - https://repo.maven.apache.org/maven2
+
+dependencies:
+  - $libs.amper.jdk.provisioning
+  - $ktor.client.cio: runtime-only
+
+pluginInfo:
+  settingsClass: Schema
+
+settings:
+  ktor: enabled

@@ -1,0 +1,5 @@
+[versions]
+amper = "0.10.0-dev-3648"
+
+[libraries]
+amper-jdk-provisioning = {module = "org.jetbrains.amper:amper-jdk-provisioning", version="0.10.0-dev-3648"}

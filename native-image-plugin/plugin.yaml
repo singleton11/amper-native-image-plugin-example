@@ -1,0 +1,7 @@
+
+tasks:
+  provision:
+    action: !provision
+      output: ${taskOutputDir}/provisionResult.txt
+      graalVmVersion: ${pluginSettings.version}
+      graalVmDistribution: ${pluginSettings.distribution}
