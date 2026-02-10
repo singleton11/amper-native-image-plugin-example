@@ -45,9 +45,6 @@ private fun findGraalVmInEnv(envVar: String): String? {
     return if (nativeImagePath.exists()) envValue else null
 }
 
-private fun nativeImageExecutableName(): String = if (isWindows()) "native-image.cmd" else "native-image"
-
-private fun isWindows(): Boolean = System.getProperty("os.name", "unknown").contains("Windows")
 
 private fun provisionGraalVmHome(
     distribution: GraalVmDistribution,

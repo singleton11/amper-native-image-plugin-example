@@ -1,4 +1,6 @@
 product: jvm/app
 
 plugins:
-  native-image-plugin: enabled
+  native-image-plugin:
+    enabled: true
+    mainClass: MainKt
