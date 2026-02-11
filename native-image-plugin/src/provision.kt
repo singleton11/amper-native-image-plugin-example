@@ -17,38 +17,26 @@ import kotlin.io.path.exists
 fun provision(
     graalVmVersion: String,
     graalVmDistribution: GraalVmDistribution,
+    acknowledgeLicense: Boolean,
     @Output output: Path,
 ) {
-    val graalVmHome = findGraalVmHome() ?: run {
-        require(graalVmVersion.isNotBlank()) {
-            "graalVmVersion must be set when GRAALVM_HOME/JAVA_HOME are not configured"
-        }
-        provisionGraalVmHome(
-            distribution = graalVmDistribution,
-            version = graalVmVersion,
-        )
+    require(graalVmVersion.isNotBlank()) {
+        "graalVmVersion must be set when GRAALVM_HOME/JAVA_HOME are not configured"
     }
+    val graalVmHome = provisionGraalVmHome(
+        distribution = graalVmDistribution,
+        version = graalVmVersion,
+        acknowledgeLicense = acknowledgeLicense,
+    )
     output.createParentDirectories()
     output.toFile().writeText(graalVmHome)
-}
-
-private fun findGraalVmHome(): String? {
-    return findGraalVmInEnv("GRAALVM_HOME") ?: findGraalVmInEnv("JAVA_HOME")
-}
-
-private fun findGraalVmInEnv(envVar: String): String? {
-    val envValue = System.getenv(envVar) ?: return null
-    val homePath = Path.of(envValue)
-    if (!homePath.exists()) return null
-
-    val nativeImagePath = homePath / "bin" / nativeImageExecutableName()
-    return if (nativeImagePath.exists()) envValue else null
 }
 
 
 private fun provisionGraalVmHome(
     distribution: GraalVmDistribution,
     version: String,
+    acknowledgeLicense: Boolean = false,
 ): String {
     val majorVersion = parseJavaMajorVersion(version)
     val userCacheRoot = amperUserCacheRoot()
@@ -66,6 +54,7 @@ private fun provisionGraalVmHome(
             criteria = JdkProvisioningCriteria(
                 majorVersion = majorVersion,
                 distributions = listOf(distribution.toJvmDistribution()),
+                acknowledgedLicenses = if (acknowledgeLicense) listOf(JvmDistribution.OracleGraalVM) else emptyList(),
             )
         )
     }.orThrow()

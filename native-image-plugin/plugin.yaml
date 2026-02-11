@@ -5,6 +5,7 @@ tasks:
       output: ${taskOutputDir}/provisionResult.txt
       graalVmVersion: ${pluginSettings.version}
       graalVmDistribution: ${pluginSettings.distribution}
+      acknowledgeLicense: ${pluginSettings.acknowledgeOracleLicense}
 
   buildNativeImage:
     action: !buildNativeImage
