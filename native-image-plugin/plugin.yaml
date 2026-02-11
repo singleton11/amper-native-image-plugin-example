@@ -14,3 +14,11 @@ tasks:
       classpath: ${module.runtimeClasspath}
       mainClass: ${pluginSettings.mainClass}
       output: ${taskOutputDir}/nativeImage
+
+  runTracingAgent:
+    action: !tracingAgent
+      resources: ${module.resources}
+      classpath: ${module.runtimeClasspath}
+      graalVmHomePath: ${provision.taskOutputDir}/provisionResult.txt
+      jarPath: ${module.jar}
+      mainClass: ${pluginSettings.mainClass}
