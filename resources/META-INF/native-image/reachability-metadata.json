@@ -1,0 +1,57 @@
+{
+  "reflection": [
+    {
+      "type": "org.jline.terminal.impl.jansi.JansiSupportImpl"
+    },
+    {
+      "type": "org.jline.terminal.impl.jna.JnaSupportImpl"
+    },
+    {
+      "type": "sun.misc.Signal",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": [
+            "java.lang.String"
+          ]
+        },
+        {
+          "name": "handle",
+          "parameterTypes": [
+            "sun.misc.Signal",
+            "sun.misc.SignalHandler"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "sun.misc.SignalHandler",
+      "fields": [
+        {
+          "name": "SIG_DFL"
+        }
+      ]
+    },
+    {
+      "type": {
+        "proxy": [
+          "sun.misc.SignalHandler"
+        ]
+      }
+    }
+  ],
+  "resources": [
+    {
+      "glob": "META-INF/services/org.jline.terminal.spi.JansiSupport"
+    },
+    {
+      "glob": "META-INF/services/org.jline.terminal.spi.JnaSupport"
+    },
+    {
+      "glob": "org/jline/utils/capabilities.txt"
+    },
+    {
+      "glob": "org/jline/utils/xterm-256color.caps"
+    }
+  ]
+}
