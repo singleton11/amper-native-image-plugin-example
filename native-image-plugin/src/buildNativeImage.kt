@@ -12,7 +12,6 @@ import kotlin.io.path.exists
 @TaskAction
 fun buildNativeImage(
     @Input graalVmHomePath: Path,
-    @Input jarPath: CompilationArtifact,
     @Input classpath: Classpath,
     mainClass: String,
     @Output output: Path,
@@ -26,8 +25,7 @@ fun buildNativeImage(
 
     output.createParentDirectories()
 
-    val allFiles = listOf(jarPath.artifact) + classpath.resolvedFiles
-    val fullClasspath = allFiles.joinToString(File.pathSeparator)
+    val fullClasspath = classpath.resolvedFiles.joinToString(File.pathSeparator)
 
     val process = ProcessBuilder(
         nativeImageExe.toString(),

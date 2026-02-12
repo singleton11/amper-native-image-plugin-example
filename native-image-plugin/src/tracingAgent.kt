@@ -13,7 +13,6 @@ import kotlin.io.path.exists
 @TaskAction
 fun tracingAgent(
     @Input graalVmHomePath: Path,
-    @Input jarPath: CompilationArtifact,
     @Input classpath: Classpath,
     mainClass: String,
     @Output resources: ModuleSources,
@@ -26,8 +25,7 @@ fun tracingAgent(
     val outputDir = resources.sourceDirectories.first() / "META-INF/native-image/"
     outputDir.createDirectories()
 
-    val allFiles = listOf(jarPath.artifact) + classpath.resolvedFiles
-    val fullClasspath = allFiles.joinToString(File.pathSeparator)
+    val fullClasspath = classpath.resolvedFiles.joinToString(File.pathSeparator)
 
     val process = ProcessBuilder(
         javaExe.toString(),
