@@ -1,9 +1,4 @@
-import org.jetbrains.amper.plugins.Classpath
-import org.jetbrains.amper.plugins.CompilationArtifact
-import org.jetbrains.amper.plugins.Input
-import org.jetbrains.amper.plugins.ModuleSources
-import org.jetbrains.amper.plugins.Output
-import org.jetbrains.amper.plugins.TaskAction
+import org.jetbrains.amper.plugins.*
 import java.io.File
 import java.nio.file.Path
 import kotlin.io.path.createDirectories

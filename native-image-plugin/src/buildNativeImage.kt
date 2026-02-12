@@ -1,5 +1,4 @@
 import org.jetbrains.amper.plugins.Classpath
-import org.jetbrains.amper.plugins.CompilationArtifact
 import org.jetbrains.amper.plugins.Input
 import org.jetbrains.amper.plugins.Output
 import org.jetbrains.amper.plugins.TaskAction
