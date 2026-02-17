@@ -9,7 +9,7 @@ tasks:
 
   buildNativeImage:
     action: !buildNativeImage
-      graalVmHomePath: ${provision.taskOutputDir}/provisionResult.txt
+      graalVmHomePath: ${provision.action.output}
       classpath: ${module.runtimeClasspath}
       mainClass: ${pluginSettings.mainClass}
       output: ${taskOutputDir}/nativeImage
@@ -18,5 +18,5 @@ tasks:
     action: !tracingAgent
       resources: ${module.resources}
       classpath: ${module.runtimeClasspath}
-      graalVmHomePath: ${provision.taskOutputDir}/provisionResult.txt
+      graalVmHomePath: ${provision.action.output}
       mainClass: ${pluginSettings.mainClass}
